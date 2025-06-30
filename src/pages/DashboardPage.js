@@ -293,9 +293,6 @@ const DashboardPage = () => {
                             {new Date(r.reminder_date).toLocaleString()}
                           </p>
                         </div>
-                        <button className="text-xs bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700 transition">
-                          Mark Done
-                        </button>
                       </div>
                     </li>
                   ))}

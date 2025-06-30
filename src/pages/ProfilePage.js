@@ -44,11 +44,7 @@ const ProfilePage = () => {
   };
 
   const handleDelete = async () => {
-    if (
-      !window.confirm(
-        "Your profile will be permanently deleted in 8 days. Continue?"
-      )
-    )
+    if (!window.confirm("Your profile will be permanently deleted.Continue?"))
       return;
     try {
       await axios.delete("/profile");

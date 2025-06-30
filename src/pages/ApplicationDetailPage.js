@@ -84,16 +84,39 @@ const ApplicationDetailPage = () => {
     setFiles((prev) => ({ ...prev, [name]: files[0] }));
   };
 
+  // const handleUpload = async (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   if (files.resume) formData.append("resume", files.resume);
+  //   if (files.cover_letter) formData.append("cover_letter", files.cover_letter);
+  //   try {
+  //     let { data } = await axios.post(`/applications/${id}/upload`, formData);
+  //     console.log("Resume URL:", data.data.resume);
+  //     console.log("Cover URL:", data.data.cover_letter);
+  //     toast.success("Files uploaded");
+  //   } catch (err) {
+  //     toast.error("Upload failed");
+  //   }
+  // };
+
   const handleUpload = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     if (files.resume) formData.append("resume", files.resume);
     if (files.cover_letter) formData.append("cover_letter", files.cover_letter);
+
     try {
       let { data } = await axios.post(`/applications/${id}/upload`, formData);
+      toast.success("Files uploaded");
       console.log("Resume URL:", data.data.resume);
       console.log("Cover URL:", data.data.cover_letter);
-      toast.success("Files uploaded");
+
+      // ✅ re-fetch updated application data
+      const updated = await axios.get(`/applications/getById/${id}`);
+      setApp(updated.data.data);
+
+      // Optionally clear inputs
+      setFiles({ resume: null, cover_letter: null });
     } catch (err) {
       toast.error("Upload failed");
     }
