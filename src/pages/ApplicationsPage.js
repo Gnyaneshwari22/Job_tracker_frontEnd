@@ -211,7 +211,7 @@ const ApplicationsPage = () => {
               }
               className="mb-2 w-full border px-3 py-2 rounded"
             />
-            <input
+            {/* <input
               name="status"
               placeholder="Status"
               required
@@ -220,7 +220,24 @@ const ApplicationsPage = () => {
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
               className="mb-2 w-full border px-3 py-2 rounded"
-            />
+            /> */}
+            <select
+              name="status"
+              value={form.status}
+              required
+              onChange={(e) =>
+                setForm({ ...form, [e.target.name]: e.target.value })
+              }
+              className="mb-2 w-full border px-3 py-2 rounded"
+            >
+              <option value="">Select Status</option>
+              <option value="applied">Applied</option>
+              <option value="interviewed">Interviewed</option>
+              <option value="offered">Offered</option>
+              <option value="rejected">Rejected</option>
+              <option value="hired">Hired</option>
+            </select>
+
             <textarea
               name="notes"
               placeholder="Notes"
