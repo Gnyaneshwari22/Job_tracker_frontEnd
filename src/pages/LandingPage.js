@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 import { ToastContainer } from "react-toastify";
@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const LandingPage = () => {
   const [activeTab, setActiveTab] = useState("login");
-  const navigate = useNavigate();
+ 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
